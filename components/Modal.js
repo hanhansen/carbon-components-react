@@ -13,9 +13,11 @@ class Modal extends Component {
     id: PropTypes.string,
     modalHeading: PropTypes.string,
     modalLabel: PropTypes.string,
+    optionalActionButtonText: PropTypes.string,
     secondaryButtonText: PropTypes.string,
     primaryButtonText: PropTypes.string,
     open: PropTypes.bool,
+    onRequestSubmitOptional: PropTypes.func,
     onRequestSubmit: PropTypes.func,
     onKeyDown: PropTypes.func,
     iconDescription: PropTypes.string,
@@ -50,11 +52,13 @@ class Modal extends Component {
       modalHeading,
       modalLabel,
       passiveModal,
+      optionalActionButtonText,
       secondaryButtonText,
       primaryButtonText,
       open,
       onRequestClose,
       onRequestSubmit,
+      onRequestSubmitOptional,
       iconDescription,
       primaryButtonDisabled,
       ...other
@@ -111,6 +115,9 @@ class Modal extends Component {
             <div className="bx--modal__buttons-container">
               <Button kind="secondary" onClick={onRequestClose}>
                 {secondaryButtonText}
+              </Button>
+              <Button kind="secondary" onClick={onRequestSubmitOptional}>
+                {optionalActionButtonText}
               </Button>
               <Button
                 kind="primary"
